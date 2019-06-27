@@ -145,6 +145,15 @@ public class MainActivity extends AppCompatActivity {
                     setOperator(in);
                     clearScreen();
                     break;
+
+                case 's':
+                case 'c':
+                case 't':
+                    operand1 = parseScreen();
+                    operand2 = 0;
+                    setOperator(in);
+                    clearScreen();
+                    break;
             }
         }
 
@@ -181,6 +190,12 @@ public class MainActivity extends AppCompatActivity {
             case '/':
                 ret = (int) (op1 / op2);
                 break;
+            case 's':
+                ret = (int) Math.sin(op1);
+            case 'c':
+                ret = (int) Math.cos(op1);
+            case 't':
+                ret = (int) Math.tan(op1);
         }
 
         operatorFlag = false;
