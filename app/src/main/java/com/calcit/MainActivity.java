@@ -127,6 +127,9 @@ public class MainActivity extends AppCompatActivity {
                     currentScreen = Integer.toString(operand1);
                     updateScreen();
 
+                    //reset operand2
+                    operand2 = 0;
+
                     break;
 
                 case 'r':
