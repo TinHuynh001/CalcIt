@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -85,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.buttonCalc:
                 in = '=';
                 break;
+            case R.id.buttonReset:
+                in = 'r';
+                break;
 
         }
 
@@ -110,26 +112,51 @@ public class MainActivity extends AppCompatActivity {
         {
             //since the user input is strictly controlled through the buttons
             //we can assume all non-digit input at this can only be operators
-            if (operand1 == 0)
+            switch (in)
             {
-                operand1 = parseScreen();
-                clearScreen();
-                setOperator(in);
-            }
-            else
-            {
-                if(operatorFlag && in == '=')
-                {
+                case '=':
+                    //user has decide to execute the operation
+                    //first we parse the second operand in
                     operand2 = parseScreen();
 
+                    //then calculation can be started
+                    //if we save the result in op1, user can later chain the result into another operation
                     operand1 = doMath(operand1, operand2, operator);
+
+                    //print on screen
                     currentScreen = Integer.toString(operand1);
                     updateScreen();
-                }
+
+                    break;
+
+                case 'r':
+                    reset();
+                    updateScreen();
+                    break;
+
+                case '+':
+                case '-':
+                case '*':
+                case '/':
+                    operand1 = parseScreen();
+                    setOperator(in);
+                    clearScreen();
+                    break;
             }
         }
 
 
+    }
+
+    private void reset()
+    {
+        operand1 =0;
+        operand2 =0;
+
+        operator = '0';
+        operatorFlag = false;
+
+        clearScreen();
     }
 
 
