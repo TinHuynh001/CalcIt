@@ -61,6 +61,30 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
             updateScreen();
+
+            switch (view.getId()) {
+                case R.id.buttonPlus:
+                    operator = '+';
+                    break;
+                case R.id.buttonMinus:
+                    operator = '-';
+                    break;
+                case R.id.buttonMultiply:
+                    operator = '*';
+                    break;
+                case R.id.buttonDivision:
+                    operator = '/';
+                    break;
+                case R.id.buttonSin:
+                    operator = 's';
+                    break;
+                case R.id.buttonCos:
+                    operator = 'c';
+                    break;
+                case R.id.buttonTan:
+                    operator = 't';
+                    break;
+            }
         }
     }
 
@@ -69,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
     public void updateScreen()
     {
         tv.setText(currentScreen);
-
     }
 
     private void setOperator(char c)
@@ -78,8 +101,8 @@ public class MainActivity extends AppCompatActivity {
         operatorFlag = true;
     }
 
-    private int parseNumber(String a)
+    private int parseScreen()
     {
-        return Integer.getInteger(a);
+        return Integer.getInteger(currentScreen);
     }
 }
