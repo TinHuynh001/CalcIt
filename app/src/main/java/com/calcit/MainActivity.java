@@ -113,8 +113,8 @@ public class MainActivity extends AppCompatActivity {
             if (operand1 == 0)
             {
                 operand1 = parseScreen();
-                operator = in;
-                operatorFlag = true;
+                clearScreen();
+                setOperator(in);
             }
             else
             {
@@ -122,12 +122,39 @@ public class MainActivity extends AppCompatActivity {
                 {
                     operand2 = parseScreen();
 
-                    operatorFlag
+                    operand1 = doMath(operand1, operand2, operator);
+                    currentScreen = Integer.toString(operand1);
+                    updateScreen();
                 }
             }
         }
 
 
+    }
+
+
+    private int doMath(int op1, int op2, char optor)
+    {
+        int ret =0;
+
+        switch (optor)
+        {
+            case '+':
+                ret = op1 + op2;
+                break;
+            case '-':
+                ret = op1 - op2;
+                break;
+            case '*':
+                ret = op1 * op2;
+                break;
+            case '/':
+                ret = (int) (op1 / op2);
+                break;
+        }
+
+        operatorFlag = false;
+        return ret;
     }
 
 
@@ -145,6 +172,11 @@ public class MainActivity extends AppCompatActivity {
 
     private int parseScreen()
     {
-        return Integer.getInteger(currentScreen);
+        return Integer.parseInt(currentScreen);
+    }
+
+    private void clearScreen()
+    {
+        currentScreen = "0";
     }
 }
