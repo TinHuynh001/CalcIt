@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <!-- DISPLAY SCREEN
+        USER INPUT AND RESULT -->
+
+
+    <TextView
+        android:id="@+id/calc_screen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/calc_screen_border"
+        android:clickable="false"
+        android:gravity="right"
+        android:text="0"
+
+        android:textSize="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+
+    <!-- NUMBER BUTTONS
+        ALL NUMBER BUTTONS ARE BOUND TO BUTTON_1
+        move button 1 if need to change their position together.
+    -->
+
+    <!-- ROW 1 -->
+    <Button
+        android:id="@+id/button_1"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:text="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calc_screen"
+
+
+        android:onClick="buttonClick"/>
+
+    <Button
+        android:id="@+id/button_2"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:text="2"
+        app:layout_constraintStart_toEndOf="@+id/button_1"
+        app:layout_constraintTop_toTopOf="@+id/button_1"
+
+        android:onClick="buttonClick"
+        />
+
+    <Button
+        android:id="@+id/button_3"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:text="3"
+        app:layout_constraintStart_toEndOf="@+id/button_2"
+        app:layout_constraintTop_toTopOf="@+id/button_1"
+
+        android:onClick="buttonClick"
+        />
+
+
+    <!-- ROW 2 -->
+    <Button
+        android:id="@+id/button_4"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:text="4"
+        app:layout_constraintStart_toStartOf="@+id/button_1"
+        app:layout_constraintTop_toBottomOf="@+id/button_1"
+
+        android:onClick="buttonClick"
+        />
+
+
+    <Button
+        android:id="@+id/button_5"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:text="5"
+        app:layout_constraintStart_toEndOf="@+id/button_1"
+        app:layout_constraintTop_toBottomOf="@+id/button_2"
+
+        android:onClick="buttonClick"
+        />
+
+    <Button
+        android:id="@+id/button_6"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:text="6"
+        app:layout_constraintStart_toEndOf="@+id/button_5"
+        app:layout_constraintTop_toBottomOf="@+id/button_1"
+
+        android:onClick="buttonClick"
+        />
+
+    <!-- ROW 3 -->
+    <Button
+        android:id="@+id/button_7"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:text="7"
+        app:layout_constraintStart_toStartOf="@+id/button_1"
+        app:layout_constraintTop_toBottomOf="@+id/button_4"
+
+        android:onClick="buttonClick"
+        />
+
+    <Button
+        android:id="@+id/button_8"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:text="8"
+        app:layout_constraintStart_toEndOf="@+id/button_1"
+        app:layout_constraintTop_toBottomOf="@+id/button_5"
+
+        android:onClick="buttonClick"
+        />
+
+    <Button
+        android:id="@+id/button_9"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:text="9"
+        app:layout_constraintStart_toEndOf="@+id/button_8"
+        app:layout_constraintTop_toBottomOf="@+id/button_6"
+
+        android:onClick="buttonClick"
+        />
+
+
+    <!-- ROW 4 -->
+    <Button
+        android:id="@+id/button_0"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:text="0"
+        app:layout_constraintStart_toEndOf="@+id/button_1"
+        app:layout_constraintTop_toBottomOf="@+id/button_8"
+
+        android:onClick="buttonClick"
+        />
+
+
+    <!-- OPERATOR BUTTONS
+        ALL OPERATOR BUTTONS ARE BOUND TO THE MINUS BUTTON
+        MOVE MINUS TO CHANGE THEIR POSITION TOGETHER
+    -->
+
+    <Button
+        android:id="@+id/buttonPlus"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:text="+"
+        app:layout_constraintEnd_toStartOf="@+id/buttonMinus"
+        app:layout_constraintTop_toTopOf="@+id/buttonMinus"
+
+        android:onClick="buttonClick"
+        />
+
+
+    <Button
+        android:id="@+id/buttonMinus"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="-"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calc_screen"
+
+        android:onClick="buttonClick"
+        />
+
+    <Button
+        android:id="@+id/buttonMultiply"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:text="X"
+        app:layout_constraintEnd_toStartOf="@+id/buttonMinus"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMinus"
+
+        android:onClick="buttonClick"
+        />
+
+    <Button
+        android:id="@+id/buttonDivision"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:text="/"
+        app:layout_constraintEnd_toEndOf="@+id/buttonMinus"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMinus"
+
+        android:onClick="buttonClick"
+        />
+
+
+    <Button
+        android:id="@+id/buttonTan"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:text="tan"
+        app:layout_constraintEnd_toStartOf="@+id/buttonMinus"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSin"
+
+        android:onClick="buttonClick"
+        />
+
+    <Button
+        android:id="@+id/buttonSin"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:text="sin"
+        app:layout_constraintEnd_toStartOf="@+id/buttonMinus"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMultiply"
+
+        android:onClick="buttonClick"/>
+
+    <Button
+        android:id="@+id/buttonCos"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:text="cos"
+        app:layout_constraintEnd_toEndOf="@+id/buttonMinus"
+        app:layout_constraintTop_toBottomOf="@+id/buttonDivision"
+
+        android:onClick="buttonClick"/>
+
+    <Button
+        android:id="@+id/buttonCalc"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:text="="
+        app:layout_constraintEnd_toEndOf="@+id/buttonMinus"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCos"
+        android:onClick="buttonClick"
+        />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
