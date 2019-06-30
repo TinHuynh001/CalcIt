@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CalcIt</string>
+    <string name="facebook_app_id">586143558576245</string>
+    <string name="fb_login_protocol_scheme">fb586143558576245</string>
 </resources>
