@@ -8,5 +8,6 @@ Experimental project with Android:
 
 + The calculator is currently integer-only. Will update to work with float.
 + Current working syntaxes: 
-<operand 1> + <operator> + <operand 2> + "="
-<operand 1> + <trigo operator> + "="
+   - <operand 1> + <operator> + <operand 2> + "="
+  
+   - <operand 1> + <trigo operator> + "="
