@@ -8,15 +8,23 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+
+//Add jar by Gradle, then import
+import com.mathcore.mathCore;
+
+
 public class MainActivity extends AppCompatActivity {
 
     String currentScreen = "0";
     TextView tv;
 
     char operator = '0';
-    boolean operatorFlag = false;
+    boolean prevOpCompleted = false;
     int operand1 = 0;
     int operand2 = 0;
+    mathCore mc;
+
+
 
 
     @Override
@@ -24,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tv = findViewById(R.id.calc_screen);
+
+        mc = new mathCore();
+
+
         Intent intent = getIntent();
     }
 
@@ -123,7 +135,9 @@ public class MainActivity extends AppCompatActivity {
 
                     //then calculation can be started
                     //if we save the result in op1, user can later chain the result into another operation
-                    operand1 = doMath(operand1, operand2, operator);
+                    //operand1 = doMath(operand1, operand2, operator);
+                    operand1 = mc.doMath(operand1, operand2, operator);
+
 
                     //print on screen
                     currentScreen = Integer.toString(operand1);
@@ -131,6 +145,8 @@ public class MainActivity extends AppCompatActivity {
 
                     //reset operand2
                     operand2 = 0;
+
+                    prevOpCompleted = true;
 
                     break;
 
@@ -143,9 +159,29 @@ public class MainActivity extends AppCompatActivity {
                 case '-':
                 case '*':
                 case '/':
-                    operand1 = parseScreen();
-                    setOperator(in);
-                    clearScreen();
+                    /*if (!prevOpCompleted)
+                    {
+
+                        //for chaining operations
+                        //if the user already has an operator set, and both operand 1 and 2 are ready
+                        //inputting another operator (as seen in other basic calc) would implies
+                        //the result of the last operation is to be used for this next operator
+                        //so let do what a '=' would do
+                        operand2 = parseScreen();
+
+                        operand1 = doMath(operand1, operand2, operator);
+                        currentScreen = Integer.toString(operand1);
+                        updateScreen();
+                        setOperator(in);
+                        operand2 = 0;
+                    }
+                    else
+                    { */
+                        operand1 = parseScreen();
+                        setOperator(in);
+                        prevOpCompleted = false;
+                        clearScreen();
+                    //}
                     break;
 
                 case 's':
@@ -168,12 +204,12 @@ public class MainActivity extends AppCompatActivity {
         operand2 =0;
 
         operator = '0';
-        operatorFlag = false;
+        prevOpCompleted = false;
 
         clearScreen();
     }
 
-
+/*
     private int doMath(int op1, int op2, char optor)
     {
         int ret =0;
@@ -194,17 +230,19 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 's':
                 ret = (int) Math.sin(op1);
+                break;
             case 'c':
                 ret = (int) Math.cos(op1);
+                break;
             case 't':
                 ret = (int) Math.tan(op1);
+                break;
         }
 
-        operatorFlag = false;
         return ret;
     }
 
-
+*/
 
     public void updateScreen()
     {
@@ -214,7 +252,6 @@ public class MainActivity extends AppCompatActivity {
     private void setOperator(char c)
     {
         operator = c;
-        operatorFlag = true;
     }
 
     private int parseScreen()
