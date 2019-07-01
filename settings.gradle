@@ -1,1 +1,1 @@
-include ':app', ':mathCore'
+include ':app', ':backend-app-release'

@@ -10,8 +10,7 @@ import android.widget.TextView;
 
 
 //Add jar by Gradle, then import
-import com.mathcore.mathCore;
-
+import com.backend.mathCore;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -136,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
                     //then calculation can be started
                     //if we save the result in op1, user can later chain the result into another operation
                     //operand1 = doMath(operand1, operand2, operator);
+
                     operand1 = mc.doMath(operand1, operand2, operator);
 
 
@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
         clearScreen();
     }
 
-/*
+/*  This whole thing is the mathCore.
     private int doMath(int op1, int op2, char optor)
     {
         int ret =0;
@@ -228,6 +228,8 @@ public class MainActivity extends AppCompatActivity {
             case '/':
                 ret = (int) (op1 / op2);
                 break;
+
+                //Java std Math library take RADIANS as input for its methods.
             case 's':
                 ret = (int) Math.sin(op1);
                 break;
