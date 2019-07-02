@@ -12,6 +12,8 @@ import android.widget.TextView;
 //Add jar by Gradle, then import
 import com.backend.mathCore;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity {
 
     String currentScreen = "0";
@@ -19,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     char operator = '0';
     boolean prevOpCompleted = false;
-    int operand1 = 0;
-    int operand2 = 0;
+    double operand1 = 0;
+    double operand2 = 0;
     mathCore mc;
 
 
@@ -138,9 +140,12 @@ public class MainActivity extends AppCompatActivity {
 
                     operand1 = mc.doMath(operand1, operand2, operator);
 
+                    //format the decimal to a maximum of 2 places after separator
+                    DecimalFormat df = new DecimalFormat("#.##");
+
 
                     //print on screen
-                    currentScreen = Integer.toString(operand1);
+                    currentScreen = df.format(operand1);
                     updateScreen();
 
                     //reset operand2
@@ -256,9 +261,9 @@ public class MainActivity extends AppCompatActivity {
         operator = c;
     }
 
-    private int parseScreen()
+    private double parseScreen()
     {
-        return Integer.parseInt(currentScreen);
+        return Double.parseDouble(currentScreen);
     }
 
     private void clearScreen()
